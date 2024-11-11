@@ -1,0 +1,39 @@
+﻿@using EFCORE_VERİALMA.Controllers;
+
+@model Oyun
+
+@*
+<form asp-controller="Products" asp-action="Bind" method="post">
+    <input type="text" name="toy" placeholder="Oyuncak :"/>
+    <br/>
+    <input type="text" name="game" placeholder="Game :" />
+    <br />
+    <button >BAK</button>
+</form>
+*@
+
+@*
+<form asp-controller="Products" asp-action="Bind" method="post">
+    <input type="text" asp-for="toy" placeholder="Oyuncak :" /> @*ASP-FOR İLE DE ARKA PLANDA NAME VE İD YE DEĞER ATANIR AMA GÖRDÜĞÜN GİBİ TÜR SAĞLAMALI ARTIK MODEL TANIMLANDIĞINDNA RAZOR NE ÖNERECEĞİNİ BİLİR VE HATALAR AZALIR HATTA BİR NESNE GELİYORSA VALUE ÖZELLİĞİNE DE OTOMATİK ATAR O YÜZDEN DE @MODEL OYUN GEREKLİDİR*@
+@*
+    <br />
+    <input type="text" asp-for="game" placeholder="Game :" />
+    <br />
+    <button>BAK</button>
+</form>
+*@
+@*
+<form action="/Products/Bind?index=3" method="post">
+    <input type="text" name="toy" placeholder="Oyuncak :" />
+    <input type="text" name="game" placeholder="Oyun :" />
+    <button type="submit">BAK</button>
+</form>
+*@
+
+<form asp-action="Bind" asp-route-index="3" method="post">  @*ROUTE DAKİ TANIMLI DEĞER DEĞİLSE İD O QUERY STRİNGE GİRER OZMAN*@
+    <input type="text" name="toy" placeholder="Oyuncak :" />
+    <input type="text" name="game" placeholder="Oyun :" />
+    <button type="submit">BAK</button>
+</form>
+
+

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KAVRAMLAR_LAYOUT_PARTİALVİEW", "MyAspNetCoreApp.Web\KAVRAMLAR_LAYOUT_PARTİALVİEW.csproj", "{4F6AA118-9050-4A2D-A647-EA4BB9F24ED2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP .NET CORE MVC DESIGN PATTERN", "ASP .NET CORE MVC DESIGN PATTERN\ASP .NET CORE MVC DESIGN PATTERN.csproj", "{411259C5-D029-4D84-8135-EE2735C4B90C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F6AA118-9050-4A2D-A647-EA4BB9F24ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F6AA118-9050-4A2D-A647-EA4BB9F24ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F6AA118-9050-4A2D-A647-EA4BB9F24ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F6AA118-9050-4A2D-A647-EA4BB9F24ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{411259C5-D029-4D84-8135-EE2735C4B90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{411259C5-D029-4D84-8135-EE2735C4B90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{411259C5-D029-4D84-8135-EE2735C4B90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{411259C5-D029-4D84-8135-EE2735C4B90C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA956A54-4AFF-4A55-B139-85D85B26E987}
+	EndGlobalSection
+EndGlobal

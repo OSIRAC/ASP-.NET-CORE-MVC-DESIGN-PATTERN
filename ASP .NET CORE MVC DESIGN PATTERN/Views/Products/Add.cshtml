@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+@model ProductViewModel
+
+
+    <script src="~/jquery/jquery.min.js"></script>
+    <script src="~/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+<h1>Add</h1>
+
+<div asp-validation-summary="ModelOnly"></div>  @*HERHANGİ BİR ALANDAN KAYNAKLANMAYAN HATALAR BÖYLE GÖSTERİLİR*@
+
+
+<form asp-controller="Products" asp-action="Add" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">ÜRÜN İSMİ</label> @*ASP-FOR TAG HELPER OTOMATİK İNPUT-TYPE BELİRLER*@
+        <input class="form-control" asp-for="Name">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label">Ürünn Fiyatı</label>
+        <input class="form-control" asp-for="Price">
+        <span class="text-danger" asp-validation-for="Price"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Stock" class="form-label">Ürünn Stoğu</label>
+        <input class="form-control" asp-for="Stock">
+        <span class="text-danger" asp-validation-for="Stock"></span>
+    </div>
+
+    <div class="mb-3">
+        @*
+        <label asp-for="Colour" class="form-label">Ürünn Rengi</label>
+        <input class="form-control" asp-for="Colour">
+        *@
+        @*ASP-İTEM BİR SELECTLİST ALIR RAZOR OTOMATİK OPTİONLARI OLUŞTURUR*@
+        @*ASP-İTEM OPTİON ETİKETLERİNİ OTOMATİK YAPAR BUNU İÇİNDE İÇİNE SELECTLİST ALIR*@
+        @*BİR SELECT İŞLEMİ YAPILDIĞINDA NAME=COLOUR İLE OPTİONDAKİ VALUE DEĞERİ GÖNDERİLİR SELECTED HALE GELENİN*@
+        <select class="form-select" asp-for="Colour" asp-items="@ViewBag.ColorSelect">  
+            <option value="">RENK SEÇİNİZ</option> 
+        </select>
+        <span class="text-danger" asp-validation-for="Colour"></span>
+
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" asp-for="IsPublish">
+        <label class="form-check-label" asp-for="IsPublish">
+            YAYINLANSIN MI
+        </label>    
+    </div>
+
+
+    <div class="mb-3 mt-3">
+        <span>ÜRÜN KAÇ AY SATIŞTA OLACAK</span>
+    @foreach (var item in ViewBag.Expire as Dictionary<string, int>)
+    {
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="(@item.Value)Expire" asp-for="Expire" value="@item.Value">
+                <label class="form-check-label" for="(@item.Value)Expire">
+                @item.Key
+            </label>
+        </div>
+    }
+        <span class="text-danger" asp-validation-for="Expire"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Açıklama" asp-for="Description"></textarea>
+        <label asp-for="Description">Açıklama</label>
+        <span class="text-danger" asp-validation-for="Description"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="PublishDate" class="form-label">Yayınlanma Tarihi</label>
+        <input class="form-control" asp-for="PublishDate">
+        <span class="text-danger" asp-validation-for="PublishDate"></span>
+    </div>
+
+
+
+ @*ASP FOR TAG HELPER İD=NAME,NAME=NAME YAPAR BİZ ZATEN VERİ TAŞIRKEN NAME KULLANIRIZ*@
+    <button class="btn btn-primary"type="submit">Ürün Kaydet</button>
+</form>
+
+

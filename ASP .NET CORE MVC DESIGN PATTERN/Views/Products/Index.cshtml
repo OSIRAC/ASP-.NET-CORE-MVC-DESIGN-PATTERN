@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<ProductViewModel>
+
+
+<h1>ÜRÜNLER</h1>
+
+@if(TempData["status"]!=null)
+{
+    <div class="alert alert-primary" role="alert">@TempData["status"]</div>
+}
+
+
+<a asp-controller="Products" asp-action="Add">ÜRÜN EKLE</a>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Colour</th>          
+            <th>Yayınlansın mı?</th>
+            <th>Yayında kalma süresi(ay)</th>
+            <th>Açıklama</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td>@item.Stock</td>
+                <td>@item.Colour</td>
+                <td>@item.IsPublish
+
+                    @if (@item.IsPublish)
+                    {
+                        <text>EVET</text>
+                    }
+                    else
+                    {
+                        <text>HAYIR</text>
+                    }            
+                </td>
+                <td>@item.Expire</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Description) && item.Description.Length > 10)
+                    {
+                        @item.Description.Substring(0,10)<text>....</text>
+                    }
+                    else
+                    {
+                        @item.Description
+                    }                
+                    </td>
+                @*BURADA PRODUCTS IN ACTİON METHODUNA GİT URL OLARAK DÜŞÜN URL DE İD VARYA ONA DA İTEM.İD Yİ ATA DEMEK O İTEM.İD SE KAÇINCI İTEMDAYSA ODUR BU URL DE REMOVE U TETİKLİCEKTİR*@
+                <td><a href="/anasayfa">ANASAYFA</a></td>
+                <td><a asp-controller="Home" asp-action="Index">ANASAYFAYA GİT</a></td>
+                <td><a asp-controller="Products" asp-action="Remove" asp-route-id="@item.Id">SİL</a></td>
+                <td><a asp-controller="Products" asp-action="Update" asp-route-id="@item.Id">UPDATE</a></td>
+                <td><a asp-route="product" asp-route-productid="@item.Id">BAK</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Products" asp-action="Pages" asp-route-page="1" asp-route-pageSize="3">BİRİRİNCİ SAYFADAN 3 ÜRÜN VER</a>
+
+<a asp-controller="Products" asp-action="Pages" asp-route-page="2" asp-route-pageSize="3">İKİNCİSİ SAYFADAN 3 ÜRÜN VER</a>
+
+
+
+
+

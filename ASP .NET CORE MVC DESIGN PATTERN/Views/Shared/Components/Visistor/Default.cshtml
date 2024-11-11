@@ -1,0 +1,44 @@
+﻿
+
+@model VisitorViewModel
+
+<h3>ZİYARETÇİ YORUMLARI</h3>
+@foreach (var items in ViewBag.Visitors as List<VisitorViewModel>)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">@items.Name</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">@items.Created.ToShortDateString()</h6>
+            <p class="card-text">@items.Comment</p>      
+        </div>
+    </div>
+
+}
+
+
+
+
+<hr />
+
+
+
+@if (@TempData["result"]!=null)
+{
+    <div class="alert alert-info">@TempData["result"]</div>
+}
+
+
+<form asp-controller="Home" asp-action="SaveVisitorCommet" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">İSMİNİZ</label>
+        <input  class="form-control" asp-for="Name">
+    </div>
+
+    <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="Yorumunuz" asp-for="Comment"></textarea>
+        <label asp-for="Comment">Yorumunuz</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">KAYDET</button>
+</form>

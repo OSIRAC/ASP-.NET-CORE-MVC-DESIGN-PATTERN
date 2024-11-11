@@ -1,0 +1,120 @@
+﻿@model Form
+
+
+@*ASP-FOR TAG HELPER HERŞEYİ AYARLAR ALTTAKİ GİBİ*@
+
+@*
+<form asp-action="Form" method="post">
+<div class="form-check">
+            <input class="form-check-input" asp-for="IsRead"> 
+        <label class="form-check-label" for="IsRead">
+        OKUDU MU
+    </label>
+    <input type="submit" value="GÖNDER"/>
+</div>
+</form>
+*@
+
+
+<form asp-action="Form" method="post">
+    <div class="form-check">
+        <input class="form-check-input" asp-for="IsRead">@*ASP-FOR OTOMATİK BOOL OLDUĞUNDNA VERİ TÜRÜ ANLAR*@
+        <label class="form-check-label" for="IsRead">
+            OKUDU MU
+        </label>
+        <input type="submit" value="GÖNDER" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">ÜRÜN İSMİ</label> @*VALUE DOLDURDUĞUNLA DOLAR*@
+        <input class="form-control" asp-for="Name">
+    </div>
+
+    @*ASP-İTEM BİR SELECTLİST ALIR VE OLUŞTURUR*@
+    @*ASP-FOR HANGİ VALUE ATACĞINI BİLEMEZ ASP-İTEM BURADA ATANAN SELECTLİST İLE ATAR*@
+
+    <select class="form-select" asp-for="Color" asp-items="@ViewBag.ColorSelect">
+        <option value="">RENK SEÇİNİZ</option>
+    </select>
+
+
+    
+    <div class="mb-3 mt-3">
+        <span>ÜRÜN KAÇ AY SATIŞTA OLACAK</span>
+        @foreach (var item in ViewBag.Expire as Dictionary<string, int>)
+        {
+            <div class="form-check">
+                  
+                    <input class="form-check-input" type="radio" id="(@item.Value)Expire" asp-for="Expire" value="@item.Value">       
+                    
+                <label class="form-check-label" for="(@item.Value)Expire">
+                    @item.Key
+                </label>
+            </div>
+        }
+    </div>
+    
+    @*
+    <div class="mb-3 mt-3">
+        <span>ÜRÜN KAÇ AY SATIŞTA OLACAK</span>
+        @foreach (var item in ViewBag.Expire as Dictionary<string, int>)
+        {
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="(@item.Value)Expire" asp-for="Expire" value="@item.Value">
+                <label class="form-check-label" for="(@item.Value)Expire">
+                    @item.Key
+                </label>
+            </div>
+        }
+    </div>
+    *@
+
+
+</form>
+
+
+@*
+<form asp-action="Form" method="post">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="true" name="IsRead"> ASP-FORSUZ BOŞ GELİRSE CHECHBOX
+        <label class="form-check-label" for="IsRead">
+            OKUDU MU
+        </label>
+        <input type="submit" value="GÖNDER" />
+    </div>
+</form>
+*@
+
+
+
+@*
+
+<form asp-action="Form" method="post">
+    <div class="form-check">
+
+        @if (Model.IsRead == true)
+        {
+            <input class="form-check-input" type="checkbox" chechked value="true" name="IsRead" id="IsRead" >
+        }
+        else
+        {
+            <input class="form-check-input" type="checkbox" value="true"  name="IsRead" id="IsRead">
+        }
+        <input type="hidden" name="IsRead" value="false" />
+
+        <label class="form-check-label" for="IsRead">
+            OKUDU MU checkbox
+        </label>
+        <input type="submit" value="GÖNDER" />
+    </div>
+</form>
+
+*@
+
+
+
+
+
+
+
+

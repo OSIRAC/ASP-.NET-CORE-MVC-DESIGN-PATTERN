@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Product>
+
+
+<h1>ÜRÜNLER</h1>
+    <a asp-controller="Products" asp-action="Add">ÜRÜN EKLE</a>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Islem</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Stock</td> @*BURADA PRODUCTS IN ACTİON METHODUNA GİT URL OLARAK DÜŞÜN URL DE İD VARYA ONA DA İTEM.İD Yİ ATA DEMEK O İTEM.İD SE KAÇINCI İTEMDAYSA ODUR BU URL DE REMOVE U TETİKLİCEKTİR*@
+                <td><a asp-controller="Products" asp-action="Remove"asp-route-id="@item.Id">SİL</a></td>
+                <td><a asp-controller="Products" asp-action="Update" asp-route-id="@item.Id">UPDATE</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+
+
+
